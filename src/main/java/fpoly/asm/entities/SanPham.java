@@ -31,7 +31,7 @@ public class SanPham {
     private String ma;
     @NotBlank(message = "Vui lòng không để trống tên sản phẩm")
     private String ten;
-    @NotNull(message = "Vui lòng không để trống trạng thái sản phẩm")
+    @NotNull(message = "Vui lòng chọn trạng thái sản phẩm")
     @Enumerated(EnumType.ORDINAL)
     private ActivityStatus trangThai;
 

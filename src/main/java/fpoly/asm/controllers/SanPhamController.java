@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("cua-hang/san-pham")
@@ -31,10 +32,9 @@ public class SanPhamController {
     public String index(Model model, @RequestParam(defaultValue =  "1") int page,@RequestParam(defaultValue = "10") int  limit,
                         @RequestParam(value = "nameormasp",required = false) String nameormasp,
                         @RequestParam(value = "trangThai",required = false) ActivityStatus trangThai){
-        Pageable pageable= PageRequest.of(page,limit);
+        Pageable pageable= PageRequest.of(page-1,limit);
         Page<SanPham> sanPhamPage= sanPhamRepo.findSanPhamByNameOrByMaAndTrangThai(nameormasp==null?null:nameormasp.trim(),trangThai==null?null:trangThai,pageable);
         model.addAttribute("totalPage",sanPhamPage.getTotalPages());
-        System.out.println(sanPhamPage.getContent().size());
         model.addAttribute("nameormasp",nameormasp);
         model.addAttribute("trangThai",trangThai);
         model.addAttribute("lstSanPham",sanPhamPage);
@@ -42,12 +42,19 @@ public class SanPhamController {
         return "san_pham/index";
     }
     @GetMapping("edit/{id}")
-    public String edit(@PathVariable("id") int id){
-        System.out.println("Ma edit: "+id);
-        return "san_pham/edit";
+    public String edit(Model model,@PathVariable("id") int id){
+        Optional<SanPham> sanPham= sanPhamRepo.findById(id);
+        if(sanPham.isPresent()){
+            model.addAttribute("SanPham",sanPham.get());
+            return "san_pham/edit";
+        }
+        return "redirect:/cua-hang/san-pham/index";
     }
     @GetMapping("create")
-    public String create(){
+    public String create(Model model){
+        SanPham sanPham= new SanPham();
+        sanPham.setMa(String.format("SP%04d",sanPhamRepo.findAll().size()+1));
+        model.addAttribute("SanPham",sanPham);
         return "san_pham/create";
     }
     @PostMapping("store")
@@ -59,7 +66,7 @@ public class SanPhamController {
                 errors.put(fieldErrorList.get(i).getField(),fieldErrorList.get(i).getDefaultMessage());
             }
             model.addAttribute("errors",errors);
-            model.addAttribute("sanpham",sanPham);
+            model.addAttribute("SanPham",sanPham);
             return "san_pham/create";
         }
         sanPhamRepo.save(sanPham);
@@ -74,7 +81,7 @@ public class SanPhamController {
                 errors.put(fieldErrorList.get(i).getField(),fieldErrorList.get(i).getDefaultMessage());
             }
             model.addAttribute("errors",errors);
-            model.addAttribute("sanpham",sanPham);
+            model.addAttribute("SanPham",sanPham);
             return "san_pham/edit";
         }
         sanPhamRepo.save(sanPham);
