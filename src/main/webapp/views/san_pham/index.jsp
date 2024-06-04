@@ -1,4 +1,4 @@
-<%@page language="java" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="f" uri="jakarta.tags.functions" %>
 <!doctype html>
@@ -56,8 +56,8 @@
                 <td>${sp['ten']}</td>
                 <td>${sp['trangThai']}</td>
                 <td>
-                    <a class="btn" href="/cua-hang/san-pham/edit/${sp['id']}">Edit</a>
-                    <a class="btn" href="/cua-hang/san-pham/remove/${sp['id']}">Remove</a>
+                    <a class="btn btn-warning" href="/cua-hang/san-pham/edit/${sp['id']}">Edit</a>
+                    <a class="btn btn-danger" href="/cua-hang/san-pham/remove/${sp['id']}">Remove</a>
                 </td>
             </tr>
         </c:forEach>
