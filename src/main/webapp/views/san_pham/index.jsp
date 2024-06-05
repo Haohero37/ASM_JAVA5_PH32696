@@ -22,7 +22,7 @@
         </div>
         <div class="col mb-3">
             <label for="trangThai" class="form-label">Trạng Thái</label>
-            <select type="pas" class="form-control" name="trangThai" id="trangThai">
+            <select  class="form-control" name="trangThai" id="trangThai">
                 <option value="" ${trangThai  == null ?'selected':''}>Chọn Trạng Thái</option>
                 <option value="ACTIVE" ${trangThai =='ACTIVE' ?'selected':''}>Đang Hoạt Động</option>
                 <option value="INACTIVE" ${trangThai ==  'INACTIVE'?'selected':''}>Ngưng Hoạt Động</option>
