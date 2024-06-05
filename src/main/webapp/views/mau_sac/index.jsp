@@ -17,12 +17,12 @@
     <h1 class="center">Danh Sách Màu Sắc</h1>
     <form class="row" action="/cua-hang/mau-sac/index" method="get">
         <div class="col mb-3">
-            <label for="nameormams" class="form-label">Tên/Mã Sản Phẩm</label>
+            <label for="nameormams" class="form-label">Tên/Mã Màu Sắc</label>
             <input type="text" class="form-control" id="nameormams" value="${nameormams}" name="nameormams">
         </div>
         <div class="col mb-3">
             <label for="trangThai" class="form-label">Trạng Thái</label>
-            <select type="pas" class="form-control" name="trangThai" id="trangThai">
+            <select  class="form-control" name="trangThai" id="trangThai">
                 <option value="" ${trangThai  == null ?'selected':''}>Chọn Trạng Thái</option>
                 <option value="ACTIVE" ${trangThai =='ACTIVE' ?'selected':''}>Đang Hoạt Động</option>
                 <option value="INACTIVE" ${trangThai ==  'INACTIVE'?'selected':''}>Ngưng Hoạt Động</option>

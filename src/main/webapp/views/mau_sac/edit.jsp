@@ -43,7 +43,7 @@
                 </c:if>
             </div>
             <button class="btn btn-warning mb-3 " >Cập Nhật</button>
-            <a  href="btn btn-warning mb-3" class="btn btn-success mb-3 ">Quay Lại Trang Chủ</a>
+            <a  href="/cua-hang/mau-sac/index" class="btn btn-success mb-3 ">Quay Lại Trang Chủ</a>
         </form>
     </div>
 </body>
