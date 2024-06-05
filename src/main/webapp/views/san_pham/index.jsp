@@ -40,7 +40,7 @@
         </div>
 
     </form>
-    <table class="table table-hover table-striped">
+    <table class="table  table-bordered table-hover table-striped">
         <thead>
         <th>STT</th>
         <th>Mã</th>
