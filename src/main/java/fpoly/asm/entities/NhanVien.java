@@ -1,6 +1,7 @@
 package fpoly.asm.entities;
 
 import fpoly.asm.entities.enums.ActivityStatus;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -31,7 +32,7 @@ public class NhanVien {
     @NotBlank(message = "Vui lòng không để trống tên")
     private String ten;
     @NotBlank(message = "Vui lòng không để trống mã")
-    private String maNV;
+    private String ma;
     @NotBlank(message = "Vui lòng không để trống tên đăng nhập")
     private String tenDangNhap;
     @NotBlank(message = "Vui lòng không để trống mật khẩu nhân viên")
